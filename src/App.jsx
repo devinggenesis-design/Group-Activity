@@ -1,13 +1,15 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
 import "./App.css";
 
 function App() {
   return (
     <>
       <h1>Welcome, Group Activity!</h1>
+      <button>Activity 1</button>
+      <button>Activity 2</button>
+      <button>Activity 3</button>
+      <button>Activity 4</button>
+      <button>Activity 5</button>
     </>
   );
 }
