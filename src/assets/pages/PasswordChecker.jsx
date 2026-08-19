@@ -23,45 +23,97 @@ function PasswordChecker() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-6"
-      style={{ backgroundColor: "#edf2f4" }}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        padding: "20px 0",
+        fontFamily: "Arial, sans-serif",
+      }}
     >
       <div
-        className="w-full max-w-md rounded-xl shadow-lg p-8"
         style={{
-          backgroundColor: "#2b2d42",
-          color: "#edf2f4",
+          width: "100%",
+          maxWidth: "480px",
+          backgroundColor: "#ebf0f3",
+          borderRadius: "16px",
+          padding: "32px",
+          color: "#232733",
+          boxSizing: "border-box",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.03)",
         }}
       >
-        <h1 className="text-3xl font-bold text-center mb-2">
+        <h1
+          style={{
+            fontSize: "22px",
+            fontWeight: "bold",
+            fontFamily: "Georgia, serif",
+            marginBottom: "6px",
+            color: "#232733",
+          }}
+        >
           Password Strength Checker
         </h1>
 
-        <p className="text-center mb-6 opacity-80">
+        <p
+          style={{
+            fontSize: "13px",
+            color: "#555f6d",
+            marginBottom: "20px",
+          }}
+        >
           Classify your password by length.
         </p>
 
-        {/* Password Input */}
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter your password"
-          className="w-full rounded-lg p-3 mb-4 outline-none"
-          style={{
-            backgroundColor: "#edf2f4",
-            color: "#2b2d42",
-          }}
-        />
+        <div style={{ marginBottom: "20px" }}>
+          <label
+            style={{
+              display: "block",
+              fontSize: "13px",
+              fontWeight: "bold",
+              fontFamily: "Georgia, serif",
+              marginBottom: "8px",
+              color: "#232733",
+            }}
+          >
+            Password:
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            style={{
+              width: "100%",
+              borderRadius: "8px",
+              padding: "10px 12px",
+              backgroundColor: "#ffffff",
+              border: "1px solid #cdd5df",
+              color: "#232733",
+              fontSize: "14px",
+              outline: "none",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
 
-        {/* Buttons */}
-        <div className="flex gap-3 mb-6">
+        <div
+          style={{
+            display: "flex",
+            gap: "12px",
+          }}
+        >
           <button
             onClick={checkPassword}
-            className="flex-1 py-3 rounded-lg font-semibold transition"
             style={{
-              backgroundColor: "#edf2f4",
-              color: "#2b2d42",
+              flex: 1,
+              padding: "10px 16px",
+              borderRadius: "8px",
+              fontWeight: "bold",
+              color: "#ffffff",
+              backgroundColor: "#2c2f40",
+              border: "none",
+              cursor: "pointer",
             }}
           >
             Check Password
@@ -69,34 +121,49 @@ function PasswordChecker() {
 
           <button
             onClick={clearPassword}
-            className="flex-1 py-3 rounded-lg font-semibold transition"
             style={{
-              backgroundColor: "#edf2f4",
-              color: "#2b2d42",
+              flex: 1,
+              padding: "10px 16px",
+              borderRadius: "8px",
+              fontWeight: "bold",
+              color: "#2c2f40",
+              backgroundColor: "transparent",
+              border: "1px solid #2c2f40",
+              cursor: "pointer",
             }}
           >
             Clear
           </button>
         </div>
 
-        {/* Result Panel */}
         {status && (
           <div
-            className="rounded-lg p-5"
             style={{
-              backgroundColor: "#edf2f4",
-              color: "#2b2d42",
+              borderRadius: "10px",
+              padding: "16px",
+              backgroundColor: "#ffffff",
+              border: "1px solid #e2e8f0",
+              color: "#232733",
+              marginTop: "20px",
             }}
           >
-            <h2 className="text-lg font-bold mb-3">
+            <h2
+              style={{
+                fontSize: "16px",
+                fontWeight: "bold",
+                fontFamily: "Georgia, serif",
+                marginBottom: "10px",
+                color: "#232733",
+              }}
+            >
               Password Status
             </h2>
 
-            <p className="mb-3">
+            <p style={{ marginBottom: "6px", fontSize: "13px" }}>
               <strong>Status:</strong> {status}
             </p>
 
-            <p className="mb-4">
+            <p style={{ marginBottom: "14px", fontSize: "13px" }}>
               <strong>Strength Message:</strong>{" "}
               {status === "Strong Password"
                 ? "You can use this password."
@@ -107,12 +174,16 @@ function PasswordChecker() {
                 : "Please enter a password."}
             </p>
 
-            {/* Visual Strength Indicator */}
             <div
-              className="text-center p-2 rounded font-bold"
               style={{
-                backgroundColor: "#2b2d42",
-                color: "#edf2f4",
+                textAlign: "center",
+                padding: "8px",
+                borderRadius: "6px",
+                fontWeight: "bold",
+                fontSize: "11px",
+                letterSpacing: "0.05em",
+                backgroundColor: "#2c2f40",
+                color: "#ffffff",
               }}
             >
               {status === "Strong Password"
