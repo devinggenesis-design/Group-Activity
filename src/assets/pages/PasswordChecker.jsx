@@ -52,7 +52,7 @@ function PasswordChecker() {
             color: "#232733",
           }}
         >
-          Password Strength Checker
+          Activity 3: Password Strength Checker
         </h1>
 
         <p
