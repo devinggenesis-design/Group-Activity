@@ -15,7 +15,6 @@ function ElectricityBill() {
 
     let rate = 0;
 
-    // Tiered rate conditions
     if (consumption <= 100) {
       rate = 10;
     } else if (consumption <= 200) {
@@ -34,7 +33,9 @@ function ElectricityBill() {
       consumption: consumption,
       rate: rate,
       totalBill: totalBill,
-      status: isHighUsage ? "High Electricity Usage" : "Normal Electricity Usage",
+      status: isHighUsage
+        ? "High Electricity Usage"
+        : "Normal Electricity Usage",
       isHighUsage: isHighUsage,
     });
   };
@@ -48,7 +49,7 @@ function ElectricityBill() {
   return (
     <div style={styles.wrapper}>
       <div style={styles.card}>
-        <h2 style={styles.title}>Activity 4: Electricity Bill Calculator</h2>
+        <h2 style={styles.title}>Electricity Bill Calculator</h2>
         <p style={styles.subtitle}>
           Compute a bill from kWh consumption across tiered rates.
         </p>
@@ -84,7 +85,6 @@ function ElectricityBill() {
           </button>
         </div>
 
-        {/* Result Display */}
         {result && (
           <div style={styles.resultBox}>
             <div style={styles.resultRow}>
@@ -102,7 +102,11 @@ function ElectricityBill() {
             <div style={styles.resultRow}>
               <span>Total Bill:</span>
               <strong style={{ color: "#2b2d42", fontSize: "1.05rem" }}>
-                ₱{result.totalBill.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                ₱
+                {result.totalBill.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </strong>
             </div>
 
