@@ -52,7 +52,7 @@ function PasswordChecker() {
             color: "#232733",
           }}
         >
-          Activity 3: Password Strength Checker
+          Password Strength Checker
         </h1>
 
         <p
@@ -168,10 +168,10 @@ function PasswordChecker() {
               {status === "Strong Password"
                 ? "You can use this password."
                 : status === "Medium Password"
-                ? "Consider creating a stronger password."
-                : status === "Weak Password"
-                ? "Create a stronger password."
-                : "Please enter a password."}
+                  ? "Consider creating a stronger password."
+                  : status === "Weak Password"
+                    ? "Create a stronger password."
+                    : "Please enter a password."}
             </p>
 
             <div
@@ -189,10 +189,10 @@ function PasswordChecker() {
               {status === "Strong Password"
                 ? "STRONG"
                 : status === "Medium Password"
-                ? "MEDIUM"
-                : status === "Weak Password"
-                ? "WEAK"
-                : "NO PASSWORD"}
+                  ? "MEDIUM"
+                  : status === "Weak Password"
+                    ? "WEAK"
+                    : "NO PASSWORD"}
             </div>
           </div>
         )}
