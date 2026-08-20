@@ -6,6 +6,7 @@ import ElectricityBill from "./assets/pages/ElectricityBill";
 import Login from "./assets/pages/Login";
 import "./App.css";
 <<<<<<< HEAD
+<<<<<<< HEAD
  
 
 function App() {
@@ -49,6 +50,38 @@ const pillStyle = {
 
 function Home() {
   return (
+=======
+
+const linkStyle = {
+  padding: "8px 14px",
+  borderRadius: "8px",
+  border: "none",
+  cursor: "pointer",
+  fontSize: "0.85rem",
+  fontWeight: "600",
+  fontFamily: "sans-serif",
+  textDecoration: "none",
+  backgroundColor: "transparent",
+  color: "#edf2f4",
+};
+
+const pillStyle = {
+  display: "block",
+  textAlign: "center",
+  padding: "14px 20px",
+  borderRadius: "24px",
+  backgroundColor: "#e8ecf7",
+  color: "#2b2d42",
+  fontWeight: "600",
+  fontSize: "0.9rem",
+  fontFamily: "sans-serif",
+  textDecoration: "none",
+  boxSizing: "border-box",
+};
+
+function Home() {
+  return (
+>>>>>>> 72385bc747f9837903a04aef12ab737ca6abab74
     <div
       style={{
         display: "flex",
