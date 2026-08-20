@@ -10,7 +10,7 @@ function getRemark(scoreNum) {
   if (scoreNum >= 75) return { label: "Passed", tone: "passed" };
   return { label: "Failed", tone: "failed" };
 }
-
+ 
 const TONE_STYLES = {
   excellent: "text-emerald-600",
   verygood: "text-sky-600",
@@ -19,47 +19,47 @@ const TONE_STYLES = {
   failed: "text-rose-600",
   invalid: "text-rose-600",
 };
-
+ 
 function GradeEvaluation() {
   const [studentName, setStudentName] = useState("");
   const [score, setScore] = useState("");
   const [result, setResult] = useState(null); // { name, score, remark } | null
   const [error, setError] = useState("");
-
+ 
   const handleEvaluate = (e) => {
     e.preventDefault();
     setError("");
-
+ 
     const trimmedName = studentName.trim();
     if (!trimmedName) {
       setError("Please enter the student's name.");
       setResult(null);
       return;
     }
-
+ 
     if (score.trim() === "") {
       setError("Please enter a score.");
       setResult(null);
       return;
     }
-
+ 
     const scoreNum = Number(score);
     const remark = getRemark(scoreNum);
-
+ 
     setResult({
       name: trimmedName,
       score: score.trim(),
       remark,
     });
   };
-
+ 
   const handleClear = () => {
     setStudentName("");
     setScore("");
     setResult(null);
     setError("");
   };
-
+ 
   return (
     <div className="min-h-screen w-full bg-slate-50 flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-slate-100 rounded-2xl shadow-sm p-8">
@@ -70,7 +70,7 @@ function GradeEvaluation() {
         <p className="mt-2 text-sm text-slate-500">
           Classify a score into Excellent → Failed.
         </p>
-
+ 
         {/* Form */}
         <form onSubmit={handleEvaluate} className="mt-6 space-y-5">
           <div>
@@ -89,7 +89,7 @@ function GradeEvaluation() {
               className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400"
             />
           </div>
-
+ 
           <div>
             <label
               htmlFor="score"
@@ -106,11 +106,11 @@ function GradeEvaluation() {
               className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400"
             />
           </div>
-
+ 
           {error && (
             <p className="text-sm text-rose-600 font-medium">{error}</p>
           )}
-
+ 
           <div className="flex gap-3 pt-1">
             <button
               type="submit"
@@ -127,7 +127,7 @@ function GradeEvaluation() {
             </button>
           </div>
         </form>
-
+ 
         {/* Result */}
         {result && (
           <div className="mt-6 rounded-lg bg-white border border-slate-200 p-5 space-y-2">
@@ -151,5 +151,5 @@ function GradeEvaluation() {
     </div>
   );
 }
-
+ 
 export default GradeEvaluation;
