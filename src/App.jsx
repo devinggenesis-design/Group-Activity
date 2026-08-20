@@ -165,13 +165,16 @@ function App() {
           )}
         </div>
  
+        
       </form>
  
       <footer>
-        <span>group act</span>
+        <span>group</span>
+        <span>10</span>
       </footer>
     </div>
   );
 }
  
 export default App;
+ 
