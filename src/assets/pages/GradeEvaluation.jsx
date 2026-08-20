@@ -1,16 +1,5 @@
 import { useState } from "react";
-/**
- * GradeEvaluation.jsx
- * Activity 2 — Student Grade Evaluation
- *
- * Evaluates a score into a remark (Excellent -> Failed) with range validation.
- * Self-contained component — safe to drop into any branch and import into
- * App.jsx without touching other files:
- *
- *   import GradeEvaluation from "./GradeEvaluation";
- *   ...
- *   <GradeEvaluation />
- */
+
 
 function getRemark(scoreNum) {
   if (Number.isNaN(scoreNum)) return { label: "Invalid score", tone: "invalid" };
@@ -23,13 +12,12 @@ function getRemark(scoreNum) {
 }
 
 const TONE_STYLES = {
-  excellent: "text-emerald-400",
-  verygood: "text-sky-400",
-  good: "text-indigo-300",
-  passed: "text-amber-400",
-  failed: "text-rose-400",
-  invalid: "text-rose-500",
-  idle: "text-slate-500",
+  excellent: "text-emerald-600",
+  verygood: "text-sky-600",
+  good: "text-indigo-600",
+  passed: "text-amber-600",
+  failed: "text-rose-600",
+  invalid: "text-rose-600",
 };
 
 function GradeEvaluation() {
@@ -73,139 +61,92 @@ function GradeEvaluation() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-100 flex items-center justify-center p-6">
-      <div className="w-full max-w-3xl bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+    <div className="min-h-screen w-full bg-slate-50 flex items-center justify-center p-6">
+      <div className="w-full max-w-md bg-slate-100 rounded-2xl shadow-sm p-8">
         {/* Header */}
-        <div className="px-8 pt-8 pb-6 border-b border-slate-200">
-          <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-indigo-600 text-white font-semibold text-sm">
-              2
-            </span>
-            <span className="text-xs font-bold tracking-widest text-indigo-600">
-              ACTIVITY 2
-            </span>
-          </div>
-          <h1 className="mt-2 text-3xl font-serif font-bold text-slate-900">
-            Student Grade Evaluation
-          </h1>
-          <p className="mt-1 text-sm italic text-slate-500">
-            Evaluate a score into Excellent → Failed, with range validation.
-          </p>
-        </div>
+        <h1 className="text-3xl font-serif font-bold text-slate-900">
+          Student Grade Evaluation
+        </h1>
+        <p className="mt-2 text-sm text-slate-500">
+          Classify a score into Excellent → Failed.
+        </p>
 
         {/* Form */}
-        <form onSubmit={handleEvaluate} className="px-8 py-6">
-          <div className="bg-indigo-50 rounded-xl p-5 space-y-4">
-            <h2 className="text-xs font-bold tracking-widest text-indigo-600">
-              INPUTS
-            </h2>
-
-            <div>
-              <label
-                htmlFor="studentName"
-                className="block text-sm font-medium text-slate-700 mb-1"
-              >
-                Student Name
-              </label>
-              <input
-                id="studentName"
-                type="text"
-                value={studentName}
-                onChange={(e) => setStudentName(e.target.value)}
-                placeholder="e.g. Juan Dela Cruz"
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="score"
-                className="block text-sm font-medium text-slate-700 mb-1"
-              >
-                Score
-              </label>
-              <input
-                id="score"
-                type="number"
-                value={score}
-                onChange={(e) => setScore(e.target.value)}
-                placeholder="0 - 100"
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
-              />
-            </div>
-
-            {error && (
-              <p className="text-sm text-rose-600 font-medium">{error}</p>
-            )}
-
-            <div className="flex gap-3 pt-1">
-              <button
-                type="submit"
-                className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition-colors"
-              >
-                Evaluate
-              </button>
-              <button
-                type="button"
-                onClick={handleClear}
-                className="px-4 py-2 rounded-lg bg-white text-slate-600 text-sm font-semibold border border-slate-300 hover:bg-slate-50 transition-colors"
-              >
-                Clear
-              </button>
-            </div>
+        <form onSubmit={handleEvaluate} className="mt-6 space-y-5">
+          <div>
+            <label
+              htmlFor="studentName"
+              className="block text-sm font-bold text-slate-900 mb-2"
+            >
+              Student Name:
+            </label>
+            <input
+              id="studentName"
+              type="text"
+              value={studentName}
+              onChange={(e) => setStudentName(e.target.value)}
+              placeholder="Enter student name"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            />
           </div>
 
-          {/* Conditions reference */}
-          <div className="mt-4 rounded-xl border border-slate-200 p-5">
-            <h2 className="text-xs font-bold tracking-widest text-indigo-600 mb-3">
-              CONDITIONS
-            </h2>
-            <ul className="grid grid-cols-2 gap-y-1 text-sm text-slate-700">
-              <li><span className="font-semibold">90 - 100</span> → Excellent</li>
-              <li><span className="font-semibold">85 - 89</span> → Very Good</li>
-              <li><span className="font-semibold">80 - 84</span> → Good</li>
-              <li><span className="font-semibold">75 - 79</span> → Passed</li>
-              <li><span className="font-semibold">Below 75</span> → Failed</li>
-              <li><span className="font-semibold">&lt;0 or &gt;100</span> → "Invalid score"</li>
-            </ul>
+          <div>
+            <label
+              htmlFor="score"
+              className="block text-sm font-bold text-slate-900 mb-2"
+            >
+              Score:
+            </label>
+            <input
+              id="score"
+              type="number"
+              value={score}
+              onChange={(e) => setScore(e.target.value)}
+              placeholder="Enter score (0 - 100)"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            />
           </div>
 
-          {/* Result panel */}
-          <div className="mt-4 rounded-xl bg-slate-900 p-6">
-            <h2 className="text-xs font-bold tracking-widest text-sky-400 mb-4">
-              RESULT
-            </h2>
+          {error && (
+            <p className="text-sm text-rose-600 font-medium">{error}</p>
+          )}
 
-            {!result ? (
-              <p className="text-sm text-slate-500">
-                Enter a name and score, then press Evaluate.
-              </p>
-            ) : (
-              <div className="space-y-3">
-                <div>
-                  <span className="text-xs uppercase tracking-wide text-slate-400">
-                    Student Name
-                  </span>
-                  <p className="text-lg font-semibold text-white">{result.name}</p>
-                </div>
-                <div>
-                  <span className="text-xs uppercase tracking-wide text-slate-400">
-                    Score
-                  </span>
-                  <p className="text-lg font-semibold text-white">{result.score}</p>
-                </div>
-                <div>
-                  <span className="text-xs uppercase tracking-wide text-slate-400">
-                    Remarks
-                  </span>
-                  <p className={`text-xl font-bold ${TONE_STYLES[result.remark.tone]}`}>
-                    {result.remark.label}
-                  </p>
-                </div>
-              </div>
-            )}
+          <div className="flex gap-3 pt-1">
+            <button
+              type="submit"
+              className="flex-1 rounded-lg bg-slate-900 text-white text-sm font-bold py-3 hover:bg-slate-800 transition-colors"
+            >
+              Check Grade
+            </button>
+            <button
+              type="button"
+              onClick={handleClear}
+              className="flex-1 rounded-lg bg-white text-slate-900 text-sm font-bold py-3 border border-slate-300 hover:bg-slate-50 transition-colors"
+            >
+              Clear
+            </button>
           </div>
         </form>
+
+        {/* Result */}
+        {result && (
+          <div className="mt-6 rounded-lg bg-white border border-slate-200 p-5 space-y-2">
+            <p className="text-sm text-slate-600">
+              <span className="font-bold text-slate-900">Student:</span>{" "}
+              {result.name}
+            </p>
+            <p className="text-sm text-slate-600">
+              <span className="font-bold text-slate-900">Score:</span>{" "}
+              {result.score}
+            </p>
+            <p className="text-sm text-slate-600">
+              <span className="font-bold text-slate-900">Remarks:</span>{" "}
+              <span className={`font-bold ${TONE_STYLES[result.remark.tone]}`}>
+                {result.remark.label}
+              </span>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
